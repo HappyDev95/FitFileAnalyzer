@@ -7,7 +7,7 @@ namespace FitFileAnalyzer.Util
     {
 
 
-        public static void DisplayActivity(List<DatapointModel> list) 
+        public static void DisplayActivity(List<DatapointModel> list)
         {
             //TODO: import graph library and go to town.
         }

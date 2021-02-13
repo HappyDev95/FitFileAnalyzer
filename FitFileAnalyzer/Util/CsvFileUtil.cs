@@ -78,7 +78,11 @@ namespace FitFileAnalyzer.Util
                     }
                     if (lineNum > 1)
                     {
-                        datapointList.Add(ExtractDatapoint(line, categories));
+                        var dp = ExtractDatapoint(line, categories);
+                        if (dp != null)
+                        {
+                            datapointList.Add(dp);
+                        }
                     }
                     lineNum++;
                 }
@@ -97,8 +101,15 @@ namespace FitFileAnalyzer.Util
             DatapointModel dp = new DatapointModel();
             for (int j = 0; j < line.Length; j++)
             {
-                if (line[j].Equals(string.Empty))
+
+                //
+                if (categories[j].Equals("TimerEvent") || categories[j].Equals("Lap") && line[j].Equals(string.Empty))
+                {
                     continue;
+                }
+
+                if (line[j].Equals(string.Empty))
+                    return null;
 
                 switch (categories[j])
                 {
@@ -106,7 +117,7 @@ namespace FitFileAnalyzer.Util
                         dp.Seconds = Int32.Parse(line[j]);
                         break;
                     case "Timestamp":
-                        dp.Timestamp = long.Parse(line[j]);
+                        dp.Timestamp = double.Parse(line[j]);
                         break;
                     case "PositionLat":
                         dp.Latitude = long.Parse(line[j]);
@@ -135,6 +146,7 @@ namespace FitFileAnalyzer.Util
                     default:
                         break;
                 }
+
             }
             return dp;
         }
@@ -142,7 +154,7 @@ namespace FitFileAnalyzer.Util
         public static string[] ParseHeader(string[] categories)
         {
             var result = new string[categories.Length];
-            for(int i = 0; i < categories.Length; i++)
+            for (int i = 0; i < categories.Length; i++)
             {
                 switch (categories[i])
                 {
@@ -175,6 +187,12 @@ namespace FitFileAnalyzer.Util
                         break;
                     case "FractionalCadence":
                         result[i] = "FractionalCadence";
+                        break;
+                    case "TimerEvent":
+                        result[i] = "TimerEvent";
+                        break;
+                    case "Lap":
+                        result[i] = "Lap";
                         break;
                     default:
                         break;

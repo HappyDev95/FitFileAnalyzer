@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Configuration;
+using FitFileAnalyzer.Model;
 using FitFileAnalyzer.Util;
 
 namespace FitFileAnalyzer
@@ -14,10 +16,20 @@ namespace FitFileAnalyzer
             Console.WriteLine("Extracting data from CSV's");
             var dataMapping = CsvFileUtil.ParseFitFileCsv(ConfigurationManager.AppSettings.Get("DesinationDirectory"));
 
-            foreach(var kvp in dataMapping)
+            List<ActivityModel> activites = new List<ActivityModel>();
+
+            foreach (var kvp in dataMapping)
             {
-                ActivityUtil.DisplayActivity(kvp.Value);
+                activites.Add(DatapointUtil.CreateActivity(kvp.Value));
+            }
+
+            foreach (var activity in activites)
+            {
+                Console.WriteLine(activity);
             }
         }
     }
+
+
+
 }
