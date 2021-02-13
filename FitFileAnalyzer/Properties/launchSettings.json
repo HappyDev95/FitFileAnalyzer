@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "FitFileAnalyzer": {
+      "commandName": "Project",
+      "commandLineArgs": "D:\\Garmin_Activities\\07-14-20to11-15-20"
+    }
+  }
+}
