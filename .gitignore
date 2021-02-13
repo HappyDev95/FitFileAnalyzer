@@ -4,6 +4,9 @@
 *.suo
 *.vs
 *.user
+bin/
+obj/
+Debug/
 
 # compiled output
 /dist
