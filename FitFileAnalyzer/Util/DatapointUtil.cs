@@ -13,13 +13,13 @@ namespace FitFileAnalyzer.Util
         /// </summary>
         /// <param name="dplist"></param>
         /// <returns>ActivityModel</returns>
-        public static ActivityModel CreateActivity(List<DatapointModel> dplist)
+        public static ActivityModel CreateActivity(string date, List<DatapointModel> dplist)
         {
             var dist = CalculateDistance(dplist);
             var time = TotalActivityTime(dplist);
             var avgHr = AverageHeartRate(dplist);
 
-            return new ActivityModel(dist, time, avgHr);
+            return new ActivityModel(date, dist, time, avgHr);
         }
 
         /// <summary>

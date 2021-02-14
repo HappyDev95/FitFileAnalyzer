@@ -20,7 +20,7 @@ namespace FitFileAnalyzer
 
             foreach (var kvp in dataMapping)
             {
-                activites.Add(DatapointUtil.CreateActivity(kvp.Value));
+                activites.Add(DatapointUtil.CreateActivity(kvp.Key, kvp.Value));
             }
 
             foreach (var activity in activites)
