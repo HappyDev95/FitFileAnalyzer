@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using ActivityMetricsCore.Enums;
 using FitFileAnalyzer.Model;
 
 namespace ActivityMetricsCore.Interfaces
 {
     interface IPaceMetrics
     {
-        void PaceTrend(List<ActivityModel> list);
-        void PaceTrend(List<ActivityModel> list, string startDate, string endDate);
-        void GetLikeActivitesByPace(List<ActivityModel> list, TimeSpan fastPace, TimeSpan slowPace);
+        void PaceTrend(List<ActivityModel> list, SortOption option = SortOption.Week);
+        void PaceTrend(List<ActivityModel> list, DateTime startDate, DateTime endDate, SortOption option = SortOption.Week);
+        void GetLikeActivitesByPace(List<ActivityModel> list, TimeSpan fastPace, TimeSpan slowPace, SortOption option = SortOption.Week);
     }
 }

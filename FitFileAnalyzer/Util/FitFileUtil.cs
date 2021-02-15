@@ -72,7 +72,7 @@ namespace FitFileAnalyzer.Util
 
                     var recordsPath = Path.Combine(
                         Path.GetDirectoryName(DESTINATION_DIR),
-                        $"{FILENAME}_{session.Session.GetStartTime().GetDateTime().ToString("MM-dd-yyyy")}_{session.Session.GetSport()}_Records.csv");
+                        $"{FILENAME}_{session.Session.GetStartTime().GetDateTime().ToString("MM-dd-yyyy_HHmmss")}_{session.Session.GetSport()}_Records.csv");
 
                     if (System.IO.File.Exists(recordsPath))
                     {

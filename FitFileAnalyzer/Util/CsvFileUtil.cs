@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Text;
-using System.Text.RegularExpressions;
 using FitFileAnalyzer.Model;
 
 namespace FitFileAnalyzer.Util
@@ -93,7 +91,7 @@ namespace FitFileAnalyzer.Util
         public static string ExtractDateTimeFromPath(string path)
         {
             string fname = Path.GetFileName(path);
-            return fname.Substring(8, 10);
+            return fname.Substring(8, 17);
         }
 
         public static DatapointModel ExtractDatapoint(string[] line, List<string> categories)

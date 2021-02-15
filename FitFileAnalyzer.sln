@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnalyzerDriver", "AnalyzerDriver\AnalyzerDriver.csproj", "{D3E46E5D-AE4B-4FAB-923B-C63284EC9721}"
+EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FitFileAnalyzer", "FitFileAnalyzer\FitFileAnalyzer.csproj", "{ECE02B1D-B785-4F59-8E11-06D3C3C58716}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ActivityMetricsCore", "ActivityMetricsCore\ActivityMetricsCore.csproj", "{935D1D74-0E33-4223-989D-6C6340D6FF6F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ActivityMetricsCore", "ActivityMetricsCore\ActivityMetricsCore.csproj", "{935D1D74-0E33-4223-989D-6C6340D6FF6F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{935D1D74-0E33-4223-989D-6C6340D6FF6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{935D1D74-0E33-4223-989D-6C6340D6FF6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{935D1D74-0E33-4223-989D-6C6340D6FF6F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3E46E5D-AE4B-4FAB-923B-C63284EC9721}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3E46E5D-AE4B-4FAB-923B-C63284EC9721}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3E46E5D-AE4B-4FAB-923B-C63284EC9721}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3E46E5D-AE4B-4FAB-923B-C63284EC9721}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
