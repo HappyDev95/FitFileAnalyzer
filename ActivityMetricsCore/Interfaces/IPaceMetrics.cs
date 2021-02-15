@@ -7,8 +7,17 @@ namespace ActivityMetricsCore.Interfaces
 {
     interface IPaceMetrics
     {
-        void PaceTrend(List<ActivityModel> list, SortOption option = SortOption.Week);
-        void PaceTrend(List<ActivityModel> list, DateTime startDate, DateTime endDate, SortOption option = SortOption.Week);
-        void GetLikeActivitesByPace(List<ActivityModel> list, TimeSpan fastPace, TimeSpan slowPace, SortOption option = SortOption.Week);
+        List<TimeSpan> PaceTrend(List<ActivityModel> list, SortOption option = SortOption.Week);
+        List<TimeSpan> PaceTrend(List<ActivityModel> list, DateTime startDate, DateTime endDate, SortOption option = SortOption.Week);
+
+        /// <summary>
+        /// Returns a list of ActivityModel objects whose pace is are in between the minPace and maxPace.
+        /// <para>The minPace is the SLOWEST pace acceptable. The maxPace is the FASTEST pace acceptable.</para>
+        /// </summary>
+        /// <param name="list">list of ActivityModel</param>
+        /// <param name="minPace">slowest pace acceptable</param>
+        /// <param name="maxPace">fastest pace acceptable</param>
+        /// <returns></returns>
+        List<ActivityModel> GetLikeActivitesByPace(List<ActivityModel> list, TimeSpan minPace, TimeSpan maxPace);
     }
 }

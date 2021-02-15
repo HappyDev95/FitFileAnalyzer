@@ -12,13 +12,28 @@ namespace FitFileAnalyzer.Util
         private static readonly string DESTINATION_DIR = ConfigurationManager.AppSettings.Get("DesinationDirectory");
         private static readonly string FILENAME = "FitFile";
 
-        public static void ReadActivityFiles(string directory)
+        public static void ReadActivityFiles(string directory, bool recurseDirectories = false)
         {
             if (!Directory.Exists(directory))
             {
                 throw new ApplicationException($"The supplied directory: {directory}, does not exist");
             }
 
+            if (recurseDirectories)
+            {
+                foreach(var dir in Directory.EnumerateDirectories(directory))
+                {
+                    ReadFromDirectory(dir);
+                }
+            }
+            else
+            {
+                ReadFromDirectory(directory);
+            }
+        }
+
+        public static void ReadFromDirectory(string directory)
+        {
             foreach (var file in Directory.EnumerateFiles(directory))
             {
                 FileStream fstream = new FileStream(file, FileMode.Open);
@@ -55,10 +70,7 @@ namespace FitFileAnalyzer.Util
                 ActivityParser activityParser = new ActivityParser(fitDecoder.Messages);
                 var sessions = activityParser.ParseSessions();
                 ExportToCsv(sessions);
-
             }
-
-
         }
 
         public static void ExportToCsv(List<SessionMessages> sessions)
@@ -93,7 +105,7 @@ namespace FitFileAnalyzer.Util
 
                     var lengthsPath = Path.Combine(
                         Path.GetDirectoryName(DESTINATION_DIR),
-                        $"{FILENAME}_{session.Session.GetStartTime().GetDateTime().ToString("yyyyMMddHHmmss")}_{session.Session.GetSport()}_Lengths.csv"
+                        $"{FILENAME}_{session.Session.GetStartTime().GetDateTime().ToString("MM-dd-yyyy_HHmmss")}_{session.Session.GetSport()}_Lengths.csv"
                         );
 
                     using (StreamWriter outputFile = new StreamWriter(lengthsPath))

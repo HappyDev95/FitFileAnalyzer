@@ -7,7 +7,7 @@ namespace ActivityMetricsCore.Interfaces
 {
     interface IHeartRateMetrics
     {
-        void HeartRateTrend(List<ActivityModel> list, SortOption option = SortOption.Week);
-        void HeartRateTrend(List<ActivityModel> list, DateTime startDate, DateTime endDate, SortOption option = SortOption.Week);
+        List<int> HeartRateTrend(List<ActivityModel> list, SortOption option = SortOption.Week);
+        List<int> HeartRateTrend(List<ActivityModel> list, DateTime startDate, DateTime endDate, SortOption option = SortOption.Week);
     }
 }
