@@ -26,7 +26,9 @@ namespace AnalyzerDriver
             MetricsProcessor mp = new MetricsProcessor();
             var dt = mp.DistanceTrend(activites, ActivityMetricsCore.Enums.SortOption.Week);
 
-            foreach(var value in dt)
+            var dt1 = mp.DistanceTrend(activites, DateTime.Parse("07-01-2020"), DateTime.Parse("08-20-2020"), ActivityMetricsCore.Enums.SortOption.Week);
+
+            foreach(var value in dt1)
             {
                 Console.WriteLine(value);
             }

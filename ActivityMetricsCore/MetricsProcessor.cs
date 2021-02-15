@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 using ActivityMetricsCore.Enums;
 using ActivityMetricsCore.Interfaces;
 using ActivityMetricsCore.Util;
@@ -41,18 +42,30 @@ namespace ActivityMetricsCore
                     total += activity.Distance;
                 }
             }
+            //TODO: add in other options
+
             return distanceList;
         }
 
-        public void DistanceTrend(List<ActivityModel> list, DateTime startDate, DateTime endDate, SortOption option = SortOption.Week)
+        public List<decimal> DistanceTrend(List<ActivityModel> list, DateTime startDate, DateTime endDate, SortOption option = SortOption.Week)
         {
+            List<ActivityModel> tempList = new List<ActivityModel>();
             foreach (var activity in list)
             {
-                if ((DateTime.Parse(activity.Date) >= startDate) && (DateTime.Parse(activity.Date) <= endDate))
+                var activityDate = DateUtil.GetDateFromString(activity.Date);
+
+                if ((activityDate >= startDate) && (activityDate <= endDate))
                 {
-                    //TODO: stuff
+                    tempList.Add(activity);
                 }
             }
+
+            if(option == SortOption.Week)
+            {
+                return DistanceTrend(tempList);
+            }
+
+            return null;
         }
 
         public void GetLikeActivitesByDistance(List<ActivityModel> list, decimal fastPace, decimal slowPace, SortOption option = SortOption.Week)
